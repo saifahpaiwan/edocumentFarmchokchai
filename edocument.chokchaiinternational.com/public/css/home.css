@@ -1,0 +1,278 @@
+.gradient {
+        background: rgb(255,255,255);
+        background: linear-gradient(90deg, rgba(255,255,255,1) 28%, rgba(254,247,228,1) 28%);
+    }
+        
+    .img001-position {
+        position: absolute;
+        top: -35rem;
+        left: 0rem;
+    }
+    .img001-product { 
+        width: 90%;
+    } 
+    .font-PR1 {
+        font-size: 15px; 
+        color: #000;
+        letter-spacing: 3px;
+        z-index: 9; 
+    }
+    .font-PR2{
+        color: #aa5c46;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: Copper Penny DTP;
+        background: #804C31;
+        background: -webkit-linear-gradient(to right, #804C31 0%, #D1A185 100%);
+        background: -moz-linear-gradient(to right, #804C31 0%, #D1A185 100%);
+        background: linear-gradient(to right, #804C31 0%, #D1A185 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .icon-page {
+        width: 55px;
+        padding: 0.1rem;
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        border: 2px solid #cd9d81;
+    }
+
+    .box-icon {
+        position: absolute;
+        left: 8rem;
+        top: 16rem;
+        z-index: 9;
+    }
+    
+    .box-title-menu {
+        position: absolute;
+        right: 10rem;
+        top: 15rem; 
+        z-index: 9;
+        width: 900px;
+    }
+    .font-title-menu {
+        line-height: 4rem;
+        padding: 2rem 0;
+        position: relative;
+        top: 1.5rem;
+        font-size: 3.5rem;
+        font-weight: bold; 
+        font-family: Copper Penny DTP;
+        background: #804C31;
+        background: -webkit-linear-gradient(to right, #804C31 0%, #D1A185 100%);
+        background: -moz-linear-gradient(to right, #804C31 0%, #D1A185 100%);
+        background: linear-gradient(to right, #804C31 0%, #D1A185 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .box-type-icon {
+        position: absolute;
+        top: 1rem;
+    }
+    .font-promeet {
+        font-size: 15px;
+        color: #9e9e9e;
+    }
+    .box-pro-selete {
+        position: absolute;
+        right: -8rem;
+        top: 35rem;
+    }
+    .box-menu-next {
+        border: 2px solid #824e33;
+        border-radius: 5px;
+        padding: 5px 0;
+    }
+    .slideimgmenu {
+        width: 100%;
+        border: 1px solid #824e33;
+        padding: 0;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .font-slideimgmenu {
+        color: #ffffff;
+        background: #824e33;
+        font-size: 9px;
+        font-weight: 100;
+        padding: 5px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .box-youtube-001 {
+        position: absolute;
+        bottom: 2rem;
+        left: 5rem;
+    } 
+    .icon-yy {width: 10%;} 
+    .icon-yy-mt {margin-top: .5rem}
+    .font-thin {
+        font-family: WDB_Bangna;
+        font-weight: 200;
+        letter-spacing: -5px;
+    }
+
+    .box-pre {
+        position: absolute;
+        right: 10rem;
+        top: 11rem;
+    }
+    .font-pre01 {
+        font-family: WDB_Bangna;
+        font-size: 1.65rem;
+        color: #835035;
+        position: relative;
+        top: 0.5rem;
+        right: 0;
+    }
+    .font-pre02 {
+        font-size: 3.5rem;
+        font-weight: 600;
+        color: #000;
+        font-family: WDB_Bangna;
+        text-align: right;
+    }
+
+    .font-BestProduct {
+        font-weight: 200;
+        font-family: WDB_Bangna; 
+        color: #FFF;
+        font-size: 2rem;
+        padding: 0 0.5rem; 
+        background: #824e33; 
+    }
+
+    .box-product-img001 {
+        position: absolute;
+        top: 3rem;
+        left: 12rem;
+        z-index: 8;
+    } 
+    
+    /* // ===================================================================== // */
+    .moveleft1 { 
+        animation: mymoveleft1 1.5s infinite; 
+    }
+    @keyframes mymoveleft1 {
+        from {left: 12rem;}
+        to {left: -350px; opacity: 0.1;}
+    }
+
+    .moveright1 { 
+        animation: mymoveright1 1.5s infinite; 
+    }
+    @keyframes mymoveright1 {
+        from {right: 10rem;}
+        to {right: -350px; opacity: 0.1;}
+    }
+
+    .fade-in1 {
+        animation: fadeIn1 ease 1.5s;
+        -webkit-animation: fadeIn1 ease 1.5s;
+        -moz-animation: fadeIn1 ease 1.5s;
+        -o-animation: fadeIn1 ease 1.5s;
+        -ms-animation: fadeIn1 ease 1.5s;
+    }
+    @keyframes fadeIn1 {
+        0% {opacity:0; top: -10rem;}
+        100% {opacity:1; top: 3rem;}
+    }
+    
+    .fade-in2 {
+        animation: fadeIn2 ease 1.5s;
+        -webkit-animation: fadeIn2 ease 1.5s;
+        -moz-animation: fadeIn2 ease 1.5s;
+        -o-animation: fadeIn2 ease 1.5s;
+        -ms-animation: fadeIn2 ease 1.5s;
+    }
+    @keyframes fadeIn2 {
+        0% {opacity:0; top: -10rem;}
+        100% {opacity:1; top: 11rem;}
+    }
+
+    .moveUp1 {
+        animation: moveup1 ease 1.5s;
+        -webkit-animation: moveup1 ease 1.5s;
+        -moz-animation: moveup1 ease 1.5s;
+        -o-animation: moveup1 ease 1.5s;
+        -ms-animation: moveup1 ease 1.5s;
+    }
+    @keyframes moveup1 {
+        0% {opacity:0; top: 11rem;}
+        100% {opacity:1; top: -10rem;}
+    }
+
+    .opacityIn {
+        animation: opacityIn1 ease 1.5s;
+        -webkit-animation: opacityIn1 ease 1.5s;
+        -moz-animation: opacityIn1 ease 1.5s;
+        -o-animation: opacityIn1 ease 1.5s;
+        -ms-animation: opacityIn1 ease 1.5s;
+    }
+    @keyframes opacityIn1 {
+        0% {opacity:0; right: -55rem;}
+        100% {opacity:1; right: 10rem;}
+    }
+
+    .rotateOut {
+        -webkit-animation-name: spin;
+        -webkit-animation-duration: 2000ms;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-name: spin;
+        -moz-animation-duration: 2000ms;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-timing-function: linear;
+        -ms-animation-name: spin;
+        -ms-animation-duration: 2000ms;
+        -ms-animation-iteration-count: infinite;
+        -ms-animation-timing-function: linear;
+    }
+    @keyframes spin {
+        0% {
+            transform:rotate(0deg);
+        }
+        100% {
+            transform:rotate(360deg);
+        }
+    } 
+    .focused {
+        background: #333; 
+    }
+    .boxActivate {
+        background: #ffddc9;
+    }
+
+    .opacityIn-menu {
+        animation: opacityIn2 ease 1.5s;
+        -webkit-animation: opacityIn2 ease 1.5s;
+        -moz-animation: opacityIn2 ease 1.5s;
+        -o-animation: opacityIn2 ease 1.5s;
+        -ms-animation: opacityIn2 ease 1.5s;
+    }
+    @keyframes opacityIn2 {
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+
+    .box-bg-main {
+        padding: 1rem 0;
+        min-height: 835px; 
+        border-bottom: 5px solid #fff5da;
+    }
+    .img-beef {width: 70%;}
+    .box-type {
+        font-family: Copper Penny DTP;
+        font-size: 0.7rem;
+        color: #fff;
+        letter-spacing: 10px;
+        background: #333;
+        padding: 0 0.5rem 0 1rem;
+        border-radius: 5px;
+    }
+    .res-001 {padding: 0;}
+    .box-procontent-1 {padding-right: 0;}
+    .box-procontent-2 {padding-right: 15px; padding-left: 0;}
+    .box-price-pt2 {padding-top: .5rem;}
+    .font-flex-001 {font-size: 0.7rem;}
