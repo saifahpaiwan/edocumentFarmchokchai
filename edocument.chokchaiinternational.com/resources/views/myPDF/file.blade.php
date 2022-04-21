@@ -66,9 +66,11 @@
                 @if(isset($data['documentGet']))
                     <?php 
                         $n=1; 
-                        $count=count($data['documentGet']);
+                        $count=count($data['documentGet']); 
+                        $txt=""; 
                     ?>
                     @foreach($data['documentGet'] as $row) 
+                        @if($row->signing_rights==1)
                         <?php 
                             if($n==1){
                                 echo '<tr>';
@@ -83,7 +85,14 @@
                                             <img src="{{ public_path('images/signature/create_sing/'.$row->signing_name) }}" alt="" height="50">  
                                         @endif
                                     </div>
-                                    <div> ลงชื่อเพื่อทราบ ...................................................... </div> 
+                                    <?php   
+                                        if($row->signing_prefix==1){
+                                            $txt="ลงชื่อเพื่อทราบ";
+                                        } else if($row->signing_prefix==2){
+                                            $txt="ลงชื่อเพื่ออนุมัติ";
+                                        } 
+                                    ?>
+                                    <div> {{$txt}} ...................................................... </div> 
                                     <div class="line-height"> ( {{$row->usersname}} ) </div> 
                                     <div class="line-height"> {{$row->position}} </div> 
                                     <div class="line-height"> 
@@ -102,8 +111,9 @@
                                 }  else {
                                     $n++;
                                 }
-                            }
+                            } 
                         ?>
+                        @endif
                     @endforeach
                 @endif  
         </table> 

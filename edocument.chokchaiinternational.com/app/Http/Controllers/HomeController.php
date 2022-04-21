@@ -41,7 +41,7 @@ class HomeController extends Controller
                     'name' => ['required', 'string', 'max:255'], 
                     'email' => ['required', 'string', 'max:100'],  
                     'position' => ['required', 'string', 'max:100'],   
-                    'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:10'], 
+                    'phone' => ['required'], 
                 ]);  
                 $data=array(
                     'name'         => $request->name, 
@@ -57,7 +57,7 @@ class HomeController extends Controller
                     'name' => ['required', 'string', 'max:255'], 
                     'email' => ['required', 'string', 'max:100'],  
                     'position' => ['required', 'string', 'max:100'],   
-                    'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:10'],  
+                    'phone' => ['required'],  
                     'output' => ['required']
                 ],
                 [  
@@ -70,7 +70,7 @@ class HomeController extends Controller
                 }
 
                 $imagedata = base64_decode($request->signatureData_image);
-                $filename = hexdec(uniqid()); 
+                $filename = $id."-".hexdec(uniqid()); 
                 $file_name = 'images/signature/create_sing_user/'.$filename.'.png';
                 file_put_contents($file_name, $imagedata); 
                 $img = Image::make(public_path($file_name))->resize(280, 100);
@@ -90,7 +90,7 @@ class HomeController extends Controller
                     'name' => ['required', 'string', 'max:255'], 
                     'email' => ['required', 'string', 'max:100'],  
                     'position' => ['required', 'string', 'max:100'],   
-                    'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'max:10'],
+                    'phone' => ['required'],
                     'file_upload'    => 'required', 
                     'file_upload.*'  => 'mimes:jpg,bmp,png|max:20000', 
                 ],
@@ -109,7 +109,7 @@ class HomeController extends Controller
                         $file = $request->file('file_upload')[$key];
                         $file_gen = hexdec(uniqid());
                         $file_ext = strtolower($file->getClientOriginalExtension()); 
-                        $file_name = "up-".$file_gen.'.'.$file_ext;
+                        $file_name = $id."-".$file_gen.'.'.$file_ext;
                         //============ Data Insert =============//  
                         $file->move($uploade_location, $file_name);  
                         $file_name_make = 'images/signature/create_sing_user/'.$file_name;
@@ -121,7 +121,7 @@ class HomeController extends Controller
                             'position'     => $request->position, 
                             'phone'        => $request->phone,
                             'is_users'     =>  1, 
-                            "signature"  => $file_name,  
+                            "signature"  =>  $file_name,  
         
                             "updated_at"         => new \DateTime(),    
                         );  

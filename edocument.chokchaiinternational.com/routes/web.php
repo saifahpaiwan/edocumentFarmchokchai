@@ -6,8 +6,9 @@ use App\Http\Controllers\RequestaccessController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\GenSignaturePDFController;
 use App\Http\Controllers\LineMessageController;
+use App\Http\Controllers\RolesController;
 
- 
+
 use Org_Heigl\Ghostscript\Ghostscript;
 use Symfony\Component\HttpFoundation\Response;
 use Spatie\PdfToImage\Pdf;
@@ -126,6 +127,14 @@ Route::middleware(['is_Users'])->group(function () {
     
     Route::post('check_lineUserid', [DocumentController::class, 'check_lineUserid'])->name('check_lineUserid.post');
     Route::post('deleteDocument', [DocumentController::class, 'deleteDocument'])->name('deleteDocument.post'); 
+
+    //Model Roles//
+    Route::get('roles-list', [RolesController::class, 'roleslist'])->name('roles.list');
+    Route::get('roles-add', [RolesController::class, 'rolesadd'])->name('roles.add'); 
+    Route::get('/roles-edit/{id}', [RolesController::class, 'rolesedit'])->name('roles.edit'); 
+    Route::post('close-roles', [RolesController::class, 'closeRoles'])->name('close.roles');  
+    Route::post('save-roles', [RolesController::class, 'saveRoles'])->name('save.roles');  
+    Route::get('datatable-roles', [RolesController::class, 'datatableRoles'])->name('datatable.roles');
 });
   
 Route::get('/Intervention', function()

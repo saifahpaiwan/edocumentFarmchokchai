@@ -163,6 +163,13 @@
                                     <i class="icon-notebook"></i>
                                     <span>ตรวจสอบเอกสาร</span>
                                 </a> 
+                                @if(Auth::user()->roles==1)
+                                    <!-- item-->
+                                    <a href="{{ route('roles.list') }}" class="dropdown-item notify-item">
+                                        <i class="fe-lock"></i>
+                                        <span>จัดการสิทธ์ผู้ใช้งาน</span>
+                                    </a> 
+                                @endif
                                 <div class="dropdown-divider"></div>
 
                                 <!-- item-->
@@ -272,6 +279,21 @@
                                     <li><a href="https://www.ilovepdf.com/th/compress_pdf"> วิธีบีบอัดไฟล์ PDF</a></li>
                                 </ul>
                             </li> 
+                            <hr style="margin-top: unset; margin-bottom: unset; border: 0; margin: 0.5rem 1.5rem; border-top: 1px solid #95a4b5;">
+                            <li>
+                                <a href="{{ route('mg_document') }}">
+                                    <i class="icon-notebook"></i> 
+                                    <span> ตรวจสอบเอกสาร </span>
+                                </a> 
+                            </li>   
+                            @if(Auth::user()->roles==1)
+                                <li>
+                                    <a href="{{ route('roles.list') }}">
+                                        <i class="fe-lock"></i> 
+                                        <span> จัดการสิทธ์ผู้ใช้งาน </span>
+                                    </a> 
+                                </li> 
+                            @endif   
                         </ul> 
                     </div>  
                 </div>  

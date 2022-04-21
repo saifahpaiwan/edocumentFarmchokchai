@@ -20,6 +20,7 @@ class GenSignaturePDFController extends Controller
         ->where('document_creates.create_status', 3)
         ->where('document_creates.deleted_at', NULL)  
         ->first(); 
+
         $data=array(
             'first'       => $first,
             'documentGet' => $this->documentGet($id)
@@ -38,7 +39,7 @@ class GenSignaturePDFController extends Controller
         ->select('document_receivers.signing_rights as signing_rights', 'document_receivers.signing_type as signing_type',
         'document_receivers.signing_name as signing_name', 'document_receivers.status_approve as status_approve',
         'document_receivers.position as position', 'users.name as usersname', 'users.signature as userssignature',
-        'document_receivers.updated_at as updated_at')
+        'document_receivers.updated_at as updated_at', 'document_receivers.signing_prefix as signing_prefix')
         ->where('document_receivers.document_id', $id) 
         ->where('document_receivers.status_approve', 2) 
         ->where('document_receivers.deleted_at', NULL)  

@@ -52,12 +52,7 @@
                             </h4>
                             <p class="mb-1"> หน้าแสดงรายการเอกสารทั้งหมดของทุกฝ่ายที่เกี่ยวข้อง สามารถตรวจสอบข้อมูลเอกสารได้ตามรายการที่ระบุ. </p>
                         </div>
-                        <div class="col-md-4 text-right">
-                            @if($data['check']=="A")
-                            <a class="btn btn-info btn-rounded width-md waves-effect waves-light" href="{{ route('mg_users') }}">      
-                            <i class="icon-people"></i> รายชื่อผู้ขอเข้าใช้งาน</a>
-                            @endif
-
+                        <div class="col-md-4 text-right"> 
                             <a class="btn btn-secondary btn-rounded width-md waves-effect waves-light" href="{{ route('dashboard') }}">     
                             ย้อนกลับ <i class="icon-arrow-right-circle"></i></a>
                         </div>

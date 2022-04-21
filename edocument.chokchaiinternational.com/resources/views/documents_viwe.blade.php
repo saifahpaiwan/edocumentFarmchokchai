@@ -465,15 +465,22 @@
                                                     <div class=""> {{$n}}. ชื่อ-นามสกุล : {{$usersRow['ReceiversName']}}  
                                                         @if($usersRow['status_approve']==2)
                                                             <span class="badge badge-success float-right" style="font-size: 10px;">
-                                                                <i class="icon-check"></i> อ่านแล้ว
+                                                                <i class="icon-check"></i> อ่านและตรวจสอบแล้ว
                                                             </span>
-                                                        @else
-                                                            <span class="badge badge-warning float-right" style="font-size: 10px;">
-                                                                <i class="icon-question"></i> ยังไม่อ่าน
-                                                            </span>
+                                                        @else 
+                                                            @if($usersRow['send_email']=="N")
+                                                                <button type="button" style="border-radius: 0; float: right;" class="btn btn-purple btn-rounded width-md waves-effect waves-light btn-xs"
+                                                                data-usersid="{{ $usersRow['UserReceiversid'] }}" id="btn-sendemail"> 
+                                                                    <span class=""><i class="icon-cursor"></i> คลิกเพื่อส่งข้อมูล</span>
+                                                                </button> 
+                                                            @elseif($usersRow['send_email']=="Y")
+                                                                <span class="badge badge-warning float-right" style="font-size: 10px;">
+                                                                    <i class="icon-check"></i> รอการตรวจสอบเอกสาร
+                                                                </span>
+                                                            @endif
                                                         @endif
                                                     </div>
-                                                    <div class=""> ตำแหน่ง : {{$usersRow['position']}} 
+                                                    <div class="mt-2"> ตำแหน่ง : {{$usersRow['position']}} 
                                                         <span class="badge badge-blue float-right"><i class="icon-magnifier"></i> สิทธิ์การดูเอกสาร </span> 
                                                     </div> 
                                                 </div> 
@@ -498,7 +505,7 @@
                                     </div> 
                                 </div> 
                             @endif   
-                            @if(isset($row['UserSignature'])) 
+                            @if(isset($row['UserSignature']))  
                                 @foreach($row['UserSignature'] as $usersRow)
                                     @if($usersRow['signing_rights']==1)
                                         <div class="col-md-6"> 
@@ -528,7 +535,15 @@
                                                     @endif 
                                                     <div style="position: relative; top: -10px;"> .......................................................................... </div> 
                                                 @else 
-                                                    <div class="mb-1 pt-3"> ลงชื่อเพื่อทราบ ...................................................... </div> 
+                                                    <?php  
+                                                        $text_ec="";
+                                                        if($usersRow['signing_prefix']==1){
+                                                            $text_ec="ลงชื่อเพื่อทราบ";
+                                                        } else if($usersRow['signing_prefix']==2){
+                                                            $text_ec="ลงชื่อเพื่ออนุมัติ";
+                                                        } 
+                                                    ?>
+                                                    <div class="mb-1 pt-3"> {{$text_ec}} ...................................................... </div> 
                                                 @endif 
 
                                                 <div class="mb-1"> ( {{$usersRow['ReceiversName']}} ) </div>
@@ -551,9 +566,7 @@
                                                 @elseif($usersRow['status_approve']==3)
                                                     <span style="font-size: 10px;" class="badge badge-danger"> 
                                                     <i class="icon-close"></i> ไม่อนุมัติ </span> 
-                                                @endif 
-                                                
-                                                
+                                                @endif  
                                                 @if($row['sender_id']==$data['users']->id) 
                                                     <?php $count=0; $arr_status_document=[]; ?>
                                                     @if(isset($row['comments_list'])) 
@@ -604,7 +617,7 @@
                                                     @endif
                                                 @endif
                                             </div> 
-                                        </div>  
+                                        </div>   
                                     @endif
                                 @endforeach 
                             @endif  

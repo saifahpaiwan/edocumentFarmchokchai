@@ -195,7 +195,7 @@
                                         <div> {{$row['sender_email']}} </div>  
                                     </div>
                                 </div> 
-                                @if(isset($row['UserSignature'])) 
+                                @if(isset($row['UserSignature']))  
                                     @foreach($row['UserSignature'] as $usersRow)
                                         @if($usersRow['UserReceiversid']==$data['users']->id)
                                             <div class="row"> 
@@ -298,6 +298,10 @@
                         @endif 
                         <div class="row">    
                             @if(isset($row['UserSignature'])) 
+                                <?php 
+                                    $count_ec=count($row['UserSignature']); 
+                                    $text_ec=""; $num_ec=1;
+                                ?> 
                                 @foreach($row['UserSignature'] as $usersRow)
                                     @if($usersRow['signing_rights']==1)
                                         <div class="col-md-6"> 
@@ -327,7 +331,8 @@
                                                     @endif 
                                                     <div style="position: relative; top: -10px;"> .......................................................................... </div> 
                                                 @else 
-                                                    <div class="mb-1 pt-3"> ลงชื่อเพื่อทราบ ...................................................... </div> 
+                                                    <?php  if($num_ec==$count_ec){ $text_ec="ลงชื่อเพื่ออนุมัติ"; } else { $text_ec="ลงชื่อเพื่อทราบ"; } ?>
+                                                    <div class="mb-1 pt-3"> {{$text_ec}} ...................................................... </div> 
                                                 @endif 
 
                                                 <div class="mb-1"> ( {{$usersRow['ReceiversName']}} ) </div>
@@ -404,6 +409,7 @@
                                                 @endif
                                             </div> 
                                         </div>  
+                                        <?php $num_ec++; ?>
                                     @endif
                                 @endforeach 
                             @endif  

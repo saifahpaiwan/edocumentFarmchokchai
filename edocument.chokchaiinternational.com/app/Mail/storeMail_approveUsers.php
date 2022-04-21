@@ -41,8 +41,7 @@ class storeMail_approveUsers extends Mailable
     {
         $data = DB::table('users') 
         ->select('*')
-        ->where('users.id', $id) 
-        ->where('users.deleted_at', NULL) 
+        ->where('users.id', $id)  
         ->first(); 
 
         return $data;

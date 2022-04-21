@@ -69,13 +69,13 @@ class DocumentController extends Controller
      
     public function create_receiver($get_id){    
         $id=Auth::user()->id;   
-        // $users=DB::table('users')->where('users.id', '!=', $id)->where('users.deleted_at', NULL)->get();
-        $users=DB::table('users')->where('users.deleted_at', NULL)->get();
+        // $users=DB::table('users')->where('users.id', '!=', $id)->where('users.deleted_at', 0)->get();
+        $users=DB::table('users')->where('users.deleted_at', 0)->get();
         $data = array(
             'get_id'      => $get_id,
             'documentGet' => $this->documentGet($get_id),
             'usersGet'    => $users,
-        );     
+        );   
         return view('create_receiver', compact('data'));
     }  
 
@@ -157,7 +157,7 @@ class DocumentController extends Controller
         $check_users=DB::table('check_users')  
         ->where('check_users.users_id', $id) 
         ->count(); 
-        $usersGet=DB::table('users')->where('users.id', '!=', $id)->where('users.deleted_at', NULL)->get();    
+        $usersGet=DB::table('users')->where('users.id', '!=', $id)->where('users.deleted_at', 0)->get();    
         $data = array(
             'users'  => $users, 
             'get_id' => $get_id,
@@ -200,7 +200,7 @@ class DocumentController extends Controller
 
 
         'usersReceivers.id as UserReceiversid', 'usersReceivers.name as ReceiversName', 
-        'document_receivers.email as ReceiversEmail', 'document_receivers.position as position', 
+        'document_receivers.email as ReceiversEmail', 'document_receivers.position as position', 'document_receivers.signing_prefix as signing_prefix',
 
 
         'document_receivers.passwrod_is as Receiverspasswrod_is', 'document_receivers.passwrod as Receiverspasswrod', 'document_creates.created_at as created_at',
@@ -262,7 +262,7 @@ class DocumentController extends Controller
         'document_comments.id as comments_id', 'document_comments.users_id as comments_usersid', 
         'document_comments.status_document as status_document', 'document_comments.detail as comments_detail',
         'document_comments.created_at as comments_created_at', 'document_creates.note as note', 'users_closeducoment.name as users_closeducoment_name',
-        'document_receivers.send_email as send_email', 'document_receivers.send_email_date as send_email_date')
+        'document_receivers.send_email as send_email', 'document_receivers.send_email_date as send_email_date', 'document_receivers.signing_prefix as signing_prefix')
         ->where('document_creates.id', $id) 
         // ->where('document_creates.create_status', 3)
         // ->where('document_creates.deleted_at', NULL)  
@@ -298,7 +298,8 @@ class DocumentController extends Controller
                 $items[$row->id]['UserSignature'][$row->receivers_id]['status_approve']=$row->status_approve;
                 $items[$row->id]['UserSignature'][$row->receivers_id]['signature_date']=$row->signature_date; 
                 $items[$row->id]['UserSignature'][$row->receivers_id]['signature']=$row->signature;  
-
+                $items[$row->id]['UserSignature'][$row->receivers_id]['signing_prefix']=$row->signing_prefix; 
+                
                 $items[$row->id]['UserSignature'][$row->receivers_id]['signing_type']=$row->signing_type;  
                 $items[$row->id]['UserSignature'][$row->receivers_id]['createSigning_name']=$row->createSigning_name;   
                 $items[$row->id]['UserSignature'][$row->receivers_id]['send_email']=$row->send_email;
@@ -432,6 +433,9 @@ class DocumentController extends Controller
     { 
         $users=[];
         if($request->users_id){
+            // $users=DB::table('users')
+            // ->where('users.id', $request->users_id) 
+            // ->get();
             $users=User::find($request->users_id);
         }
         return $users;
@@ -459,7 +463,8 @@ class DocumentController extends Controller
                         $itmes[$row['users_id']]['signing_rights']  =  $row['receiver_customRadio'];
                         $itmes[$row['users_id']]['passwrod_is']     =  $passwrod_is;
                         $itmes[$row['users_id']]['passwrod']        =  $password_document;  
-                        
+                        $itmes[$row['users_id']]['signing_prefix']        =  $row['signing_prefix'];  
+                         
                         $itmes[$row['users_id']]['email']        =  $row['users_email']; 
                         $itmes[$row['users_id']]['position']     =  $row['users_position']; 
                         
@@ -849,7 +854,7 @@ class DocumentController extends Controller
     }
 
     public function actionFormapprove(Request $request)
-    {  
+    {   
         $id=Auth::user()->id;
         $users=User::find($id); 
         if(isset($request)){ 
@@ -936,8 +941,7 @@ class DocumentController extends Controller
             if($request->redirect_hid=="viwe_io"){ 
                 $url="viwe_io";
             } 
-        }
-
+        } 
         return redirect()->route($url, [$request->document_id])->with('success', 'success'); 
     }
 
@@ -1582,7 +1586,7 @@ class DocumentController extends Controller
         $check_users=DB::table('check_users')  
         ->where('check_users.users_id', $id) 
         ->count(); 
-        $usersGet=DB::table('users')->where('users.id', '!=', $id)->where('users.deleted_at', NULL)->get();    
+        $usersGet=DB::table('users')->where('users.id', '!=', $id)->where('users.deleted_at', 0)->get();    
         $data = array(
             'users'  => $users, 
             'get_id' => $get_id,

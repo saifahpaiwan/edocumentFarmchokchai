@@ -177,22 +177,18 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-md-2 text-right">
-                                                                    <div class="custom-control custom-checkbox">
-                                                                        <input type="checkbox" class="custom-control-input" id="password_document_check-{{ $rowReceiver['receivers_id'] }}" name="receiver[{{ $rowReceiver['receivers_id'] }}][password_document_check]" value="{{ $rowReceiver['receivers_id'] }}"
-                                                                        @if($rowReceiver['passwrod_is']==1) checked @endif>
-                                                                        <label class="custom-control-label" for="password_document_check-{{ $rowReceiver['receivers_id'] }}"> ใส่รหัสเอกสาร </label>
-                                                                    </div>  
-                                                                </div>
+                                                                <label class="col-md-2 col-form-label text-right" for="users_id1"> เลือกคำนำหน้า </label>
                                                                 <div class="col-md-4"> 
-                                                                    <input type="password" id="password_document-{{ $rowReceiver['receivers_id'] }}" name="receiver[{{ $rowReceiver['receivers_id'] }}][password_document]" class="form-control form-control-sm" maxlength="6" @if($rowReceiver['passwrod_is']==2) disabled @endif
-                                                                    value="{{ $rowReceiver['Receiverspasswrod'] }}">  
+                                                                    <select class="form-control form-control-sm" name="receiver[{{ $rowReceiver['receivers_id'] }}][signing_prefix]">
+                                                                        <option selected value="1">ลงชื่อเพื่อทราบ</option> 
+                                                                        <option value="2">ลงชื่อเพื่ออนุมัติ</option> 
+                                                                    </select>
                                                                 </div> 
                                                                 <label class="col-md-2 col-form-label text-right" for="users_position-{{ $rowReceiver['receivers_id'] }}"> ตำแหน่ง </label>
                                                                 <div class="col-md-4">
                                                                     <input type="text" id="users_position-{{ $rowReceiver['receivers_id'] }}" name="receiver[{{ $rowReceiver['receivers_id'] }}][users_position]"  class="form-control form-control-sm" value="{{ $rowReceiver['position'] }}">  
                                                                 </div>
-                                                                <div class="offset-md-2 col-md-10"> <span style="font-size: 10px; color: #f44336;"> <i class="mdi mdi-alert-circle"></i>  รหัสผ่าน (Password) ตั้งค่าความปลอดภัยของเอกสาร 6 หลัก </span> </div>
+                                                                <div class="offset-md-2 col-md-10"> <span style="font-size: 10px; color: #f44336;"> <i class="mdi mdi-alert-circle"></i>  โปรดเลือกคำนำหน้า การลงลายเซ็น ลงชื่อเพื่อทราบ หรือ ลงชื่อเพื่ออนุมัติ  </span> </div>
                                                             </div>
                                                         </div> 
                                                     </div>
@@ -239,21 +235,18 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-2 text-right">
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="password_document_check-1" name="receiver[1][password_document_check]" value="1">
-                                                                <label class="custom-control-label" for="password_document_check-1"> ใส่รหัสเอกสาร </label>
-                                                            </div>  
-                                                        </div>
+                                                        <label class="col-md-2 col-form-label text-right" for="users_id1"> เลือกคำนำหน้า </label>
                                                         <div class="col-md-4"> 
-                                                            <input type="password" id="password_document-1" name="receiver[1][password_document]" class="form-control form-control-sm" maxlength="6" disabled
-                                                            value="">  
-                                                        </div> 
+                                                            <select class="form-control form-control-sm" name="receiver[1][signing_prefix]">
+                                                                <option selected value="1">ลงชื่อเพื่อทราบ</option> 
+                                                                <option value="2">ลงชื่อเพื่ออนุมัติ</option> 
+                                                            </select>
+                                                        </div>
                                                         <label class="col-md-2 col-form-label text-right" for="users_position-1"> ตำแหน่ง </label>
                                                         <div class="col-md-4">
                                                             <input type="text" id="users_position-1" name="receiver[1][users_position]"  class="form-control form-control-sm" value="">  
                                                         </div>
-                                                        <div class="offset-md-2 col-md-10"> <span style="font-size: 10px; color: #f44336;"> <i class="mdi mdi-alert-circle"></i>  รหัสผ่าน (Password) ตั้งค่าความปลอดภัยของเอกสาร 6 หลัก </span> </div>
+                                                        <div class="offset-md-2 col-md-10"> <span style="font-size: 10px; color: #f44336;"> <i class="mdi mdi-alert-circle"></i>  โปรดเลือกคำนำหน้า การลงลายเซ็น ลงชื่อเพื่อทราบ หรือ ลงชื่อเพื่ออนุมัติ  </span> </div>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -376,20 +369,18 @@
         html+='                    </div>';
         html+='                </div>';
         html+='                <div class=" row">';
-        html+='                     <div class="col-md-2 text-right">';
-        html+='                         <div class="custom-control custom-checkbox">';
-        html+='                             <input type="checkbox" class="custom-control-input" id="password_document_check-'+childElementCount+'" name="receiver['+childElementCount+'][password_document_check]" value="'+childElementCount+'">';
-        html+='                             <label class="custom-control-label" for="password_document_check-'+childElementCount+'"> ใส่รหัสเอกสาร </label>';
-        html+='                         </div>  ';
-        html+='                     </div>';
-        html+='                     <div class="col-md-4"> ';
-        html+='                         <input type="password" id="password_document-'+childElementCount+'" name="receiver['+childElementCount+'][password_document]" class="form-control form-control-sm" maxlength="6" disabled>   ';
-        html+='                     </div>';
+        html+='                            <label class="col-md-2 col-form-label text-right" for="users_id1"> เลือกคำนำหน้า </label>';
+        html+='                            <div class="col-md-4"> ';
+        html+='                                <select class="form-control form-control-sm" name="receiver['+childElementCount+'][signing_prefix]">';
+        html+='                                   <option selected value="1">ลงชื่อเพื่อทราบ</option> '; 
+        html+='                                    <option value="2">ลงชื่อเพื่ออนุมัติ</option> ';
+        html+='                                </select>';
+        html+='                            </div> ';
         html+='                    <label class="col-md-2 col-form-label text-right" for="users_position-'+childElementCount+'">ตำแหน่ง</label>';
         html+='                    <div class="col-md-4">';
         html+='                        <input type="text" id="users_position-'+childElementCount+'" name="receiver['+childElementCount+'][users_position]"  class="form-control form-control-sm" value="">  ';
         html+='                    </div>';
-        html+='                     <div class="offset-md-2 col-md-10"> <span style="font-size: 10px; color: #f44336;"> <i class="mdi mdi-alert-circle"></i>  รหัสผ่าน (Password) ตั้งค่าความปลอดภัยของเอกสาร 6 หลัก </span> </div>';
+        html+='                     <div class="offset-md-2 col-md-10"> <span style="font-size: 10px; color: #f44336;"> <i class="mdi mdi-alert-circle"></i>  โปรดเลือกคำนำหน้า การลงลายเซ็น ลงชื่อเพื่อทราบ หรือ ลงชื่อเพื่ออนุมัติ  </span> </div>';
         html+='                 </div>';
         html+='            </div>'; 
         html+='        </div>';

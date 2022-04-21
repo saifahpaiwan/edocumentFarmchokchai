@@ -114,7 +114,7 @@ class LineMessageController extends Controller
                             },
                             {
                                 "type": "text",
-                                "text": "ขออนุมัติค่าใช้จ่ายยิงแอด Page Umm!..Milk ขายสินค้าออนไลน์ ผ่าน Inter Express",
+                                "text": " ทดสอบการส่งขอข้อมูลผ่าน Line API",
                                 "align": "start",
                                 "margin": "md",
                                 "wrap": true,
@@ -153,7 +153,7 @@ class LineMessageController extends Controller
         $flexDataJsonDeCode = json_decode($flexDataJson,true);
         $datas['url'] = "https://api.line.me/v2/bot/message/push";
         $datas['token'] = "QUI9+kj0tT7Ldn7gPOIiQlPBddsfMv3c/a97RGfhbk6jaZs37iTbTzkCa0bX6v/Q3Qr6+Ah3dwZ5tjbgP1oEpctx5UrKoWigVk5sPeglgugp1hQIybarcxbwaRYJ0Ek6wqgfaRfTLWbUFphbJJDkcAdB04t89/1O/w1cDnyilFU=";
-        $messages['to'] = "U16fdad997d36061c99ca8a42518897e9";
+        $messages['to'] = "U419ca078acdb24fda12db9d670947c2b";
         $messages['messages'][] = $flexDataJsonDeCode;
         $encodeJson = json_encode($messages);
         $data=$this->sentMessage($encodeJson,$datas);
